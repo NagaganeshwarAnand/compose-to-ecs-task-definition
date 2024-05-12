@@ -176,9 +176,9 @@ dependencies = [
 
 [package.metadata]
 requires-dist = [
-    { name = "pytest", specifier = ">=9.0.1" },
-    { name = "pyyaml", specifier = ">=6.0.3" },
-    { name = "typer", specifier = ">=0.20.0" },
+    { name = "pytest", specifier = "==9.0.1" },
+    { name = "pyyaml", specifier = "==6.0.3" },
+    { name = "typer", specifier = "==0.20.0" },
 ]
 
 [[package]]
