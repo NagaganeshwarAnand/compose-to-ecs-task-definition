@@ -1,0 +1,15 @@
+version: '3.8'
+
+services:
+  nginx:
+    image: nginx:latest
+    ports:
+      - "80:80"
+    environment:
+      - DEBUG=true
+      - ENV=production
+      - LOG_LEVEL=info
+  db:
+    image: mysql:latest
+    ports:
+      - "3306:3306"

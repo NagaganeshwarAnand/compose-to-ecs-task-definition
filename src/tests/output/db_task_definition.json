@@ -1,0 +1,28 @@
+{
+  "requiresCompatibilities": [
+    "EC2"
+  ],
+  "containerDefinitions": [
+    {
+      "name": "db",
+      "image": "mysql:latest",
+      "memory": 512,
+      "cpu": 256,
+      "essential": true,
+      "portMappings": [{'containerPort': 3306, 'protocol': 'tcp'}],
+      "environment": [],
+      "logConfiguration": {
+        "logDriver": "awslogs",
+        "options": {
+          "awslogs-group": "awslogs-db-ecs",
+          "awslogs-region": "us-east-2",
+          "awslogs-stream-prefix": "db"
+        }
+      }
+    }
+  ],
+  "volumes": [],
+  "networkMode": "bridge",
+  "placementConstraints": [],
+  "family": "db"
+}

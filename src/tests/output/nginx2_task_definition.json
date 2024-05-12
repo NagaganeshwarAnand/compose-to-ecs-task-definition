@@ -1,0 +1,28 @@
+{
+  "requiresCompatibilities": [
+    "EC2"
+  ],
+  "containerDefinitions": [
+    {
+      "name": "nginx2",
+      "image": "nginx:latest",
+      "memory": 512,
+      "cpu": 256,
+      "essential": true,
+      "portMappings": [{'containerPort': 80, 'protocol': 'tcp'}],
+      "environment": [],
+      "logConfiguration": {
+        "logDriver": "awslogs",
+        "options": {
+          "awslogs-group": "awslogs-nginx2-ecs",
+          "awslogs-region": "us-east-2",
+          "awslogs-stream-prefix": "nginx2"
+        }
+      }
+    }
+  ],
+  "volumes": [],
+  "networkMode": "bridge",
+  "placementConstraints": [],
+  "family": "nginx2"
+}

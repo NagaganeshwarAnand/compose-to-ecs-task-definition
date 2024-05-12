@@ -1,0 +1,27 @@
+{
+  "requiresCompatibilities": [
+    "EC2"
+  ],
+  "containerDefinitions": [
+    {
+      "name": $name,
+      "image": $image,
+      "memory": $memory,
+      "cpu": $cpu,
+      "essential": true,
+      "portMappings": $portMappings,
+      "logConfiguration": {
+        "logDriver": "awslogs",
+        "options": {
+          "awslogs-group": "awslogs-$name-ecs",
+          "awslogs-region": "us-east-2",
+          "awslogs-stream-prefix": $name
+        }
+      }
+    }
+  ],
+  "volumes": [],
+  "networkMode": "bridge",
+  "placementConstraints": [],
+  "family": $name
+}

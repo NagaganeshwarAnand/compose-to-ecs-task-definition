@@ -1,0 +1,11 @@
+version: '3.8'
+
+services:
+  nginx2:
+    image: nginx:latest
+    ports:
+      - "80:80"
+  db:
+    image: mysql:latest
+    ports:
+      - "3306:3306"

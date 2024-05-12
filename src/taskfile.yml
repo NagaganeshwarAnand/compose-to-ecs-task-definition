@@ -1,0 +1,8 @@
+version: '3'
+
+tasks:
+  test:
+    dir: tests/
+    cmds:
+      - uv run pytest -s -vv .
+    desc: "Run tests in Docker environment"
