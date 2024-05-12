@@ -30,8 +30,91 @@ Example:
 ```bash
 uv run main.py generate-task-definitions assets/compose.yml output
 ```
+- **`<compose-file>`**: 
+  ```yaml
+  version: '3.8'
 
-Outputs: `{service_name}_task_definition.json` for each service.
+  services:
+    nginx:
+      image: nginx:latest
+      ports:
+        - "80:80"
+      environment:
+        - DEBUG=true
+        - ENV=production
+        - LOG_LEVEL=info
+    db:
+      image: mysql:latest
+      ports:
+        - "3306:3306"
+  ```
+- **`<output-dir>`**: Directory to save generated ECS task definition JSON files.
+  Outputs: `{service_name}_task_definition.json` for each service.
+  - Example: `nginx_task_definition.json`, `db_task_definition.json`
+  - **nginx_task_definition.json**:
+    ```json
+    {
+      "requiresCompatibilities": [
+        "EC2"
+      ],
+      "containerDefinitions": [
+        {
+          "name": "nginx",
+          "image": "nginx:latest",
+          "memory": 512,
+          "cpu": 256,
+          "essential": true,
+          "portMappings": [{"containerPort": 80, "protocol": "tcp"}],
+          "environment": [{"name": "DEBUG", "value": "true"}, {"name": "ENV", "value": "production"}, {"name": "LOG_LEVEL", "value": "info"}],
+          "logConfiguration": {
+            "logDriver": "awslogs",
+            "options": {
+              "awslogs-group": "awslogs-nginx-ecs",
+              "awslogs-region": "us-east-2",
+              "awslogs-stream-prefix": "nginx"
+            }
+          }
+        }
+      ],
+      "volumes": [],
+      "networkMode": "bridge",
+      "placementConstraints": [],
+      "family": "nginx"
+    }
+    ```
+  - **db_task_definition.json**:
+    ```json
+    {
+      "requiresCompatibilities": [
+        "EC2"
+      ],
+      "containerDefinitions": [
+        {
+          "name": "db",
+          "image": "mysql:latest",
+          "memory": 512,
+          "cpu": 256,
+          "essential": true,
+          "portMappings": [{"containerPort": 3306, "protocol": "tcp"}],
+          "environment": [],
+          "logConfiguration": {
+            "logDriver": "awslogs",
+            "options": {
+              "awslogs-group": "awslogs-db-ecs",
+              "awslogs-region": "us-east-2",
+              "awslogs-stream-prefix": "db"
+            }
+          }
+        }
+      ],
+      "volumes": [],
+      "networkMode": "bridge",
+      "placementConstraints": [],
+      "family": "db"
+    }
+    ```
+
+
 
 ### Reality check
 
