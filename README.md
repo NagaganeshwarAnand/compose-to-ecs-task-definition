@@ -17,7 +17,7 @@ Parses a Docker Compose file and generates individual ECS task definition files 
 ### Installation
 
 ```bash
-cd src/ && uv sync
+uv sync
 ```
 
 ### Usage
