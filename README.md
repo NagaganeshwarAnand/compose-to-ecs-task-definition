@@ -23,12 +23,12 @@ uv sync
 ### Usage
 
 ```bash
-uv run main.py generate-task-definitions <compose-file> <output-dir>
+cd src/ && uv run main.py generate-task-definitions <compose-file> <output-dir>
 ```
 
 Example:
 ```bash
-uv run main.py generate-task-definitions assets/compose.yml output
+cd src/ && uv run main.py generate-task-definitions assets/compose.yml output
 ```
 - **`<compose-file>`**: 
   ```yaml
