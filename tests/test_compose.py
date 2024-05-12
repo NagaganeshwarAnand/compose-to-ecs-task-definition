@@ -6,7 +6,7 @@ if "__file__" in globals():
     current_dir = os.path.dirname(os.path.abspath(__file__))
 else:
     current_dir = os.getcwd()
-main_dir = os.path.abspath(os.path.join(current_dir, ".."))
+main_dir = os.path.abspath(os.path.join(current_dir, "../src/"))
 
 sys.path.insert(0, main_dir)
 

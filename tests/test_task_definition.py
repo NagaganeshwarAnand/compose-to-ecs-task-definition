@@ -6,7 +6,7 @@ if "__file__" in globals():
     current_dir = os.path.dirname(os.path.abspath(__file__))
 else:
     current_dir = os.getcwd()
-main_dir = os.path.abspath(os.path.join(current_dir, ".."))
+main_dir = os.path.abspath(os.path.join(current_dir, "../src/"))
 
 sys.path.insert(0, main_dir)
 
@@ -32,7 +32,7 @@ def test_template_task_definition():
     result = template_task_definition(compose_values)
 
     with open(
-        "/Users/naanand/sandboxes/git_repos/compose-to-ecs-task-definition/src/tests/assets/expected_task_definition.txt",
+        f"{current_dir}/assets/expected_task_definition.txt",
         "r",
     ) as f:
         expected_result = f.read()
